@@ -1,5 +1,6 @@
 
 import {ApolloServer,gql} from "apollo-server";
+
 import {ApolloServerPluginLandingPageGraphQLPlayground} from 'apollo-server-core'
 import mongoose from "mongoose";
 import { MONGO_URL } from "./config.js";
@@ -34,8 +35,14 @@ const server = new ApolloServer({
     resolvers,
     plugins:[
         ApolloServerPluginLandingPageGraphQLPlayground()
-    ]
+    ],
+    cors: {
+        origin: '*', // Allow access from any domain
+        credentials: true,
+    },
 })
+
+
 
 
 //...........SERVER LISTEN..........................

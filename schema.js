@@ -10,6 +10,7 @@ const typeDefs = gql`
   #....................... TYPE...........................................
 
   type Quotes{
+    id: ID!    
     title : String!
     name : String!
   }
