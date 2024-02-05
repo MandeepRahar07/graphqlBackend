@@ -1,0 +1,63 @@
+
+query GETaLLQUOTE{
+quotes{
+title
+  name
+}
+}
+
+........................................
+
+mutation CreateQuote($quoteInput: quoteInput!) {
+  createQuote(quoteNew: $quoteInput) {
+    title
+    name
+  }
+}
+
+
+{
+  "quoteInput": {
+    "title": "typeDefs and resolvers are fundamental concepts",
+    "name": "sis"
+  }
+}
+
+
+..........................................................................
+mutation {
+  findAndDeleteQuote(_id: "65bf8c6a12b448d8145ab1a0") {
+    title
+    name
+  }
+}
+
+
+............................................................
+
+mutation EditQuote($_id: ID!, $quoteUpdate: quoteInput!) {
+  editQuote(_id: $_id, quoteUpdate: $quoteUpdate) {
+    title
+    name
+  }
+}
+
+{
+  "_id": "65bf8d5a12b448d8145ab1a2",
+  "quoteUpdate": {
+    "title": "Updated Title the title",
+    "name": "sandeep"
+  }
+}
+
+
+.........................................
+query getbyID
+{
+
+  quote(_id:"65bf8d5a12b448d8145ab1a2"){
+    id
+    title
+    name
+  }
+}

@@ -4,10 +4,11 @@ const typeDefs = gql`
 
 #.............................QUERY.......................................
   type Query {
-    quotes : [Quotes]
+    quotes : [Quotes]                                              #ALL QUOTES
+    quote(_id:ID!):Quotes                                         #FIND QUOTE BY ID
   }
 
-  #....................... TYPE...........................................
+  #.......................QUERY TYPE...........................................
 
   type Quotes{
     id: ID!    
@@ -18,9 +19,9 @@ const typeDefs = gql`
   #........................MUTATION...........................................
 
   type Mutation{
-    createQuote(quoteNew:quoteInput!):Quotes
-    findAndDeleteQuote(_id: ID!): Quotes
-    editQuote(_id: ID!, quoteUpdate: quoteInput!): Quotes
+    createQuote(quoteNew:quoteInput!):Quotes                         #CREATE A QUOTE
+    findAndDeleteQuote(_id: ID!): Quotes                             #DELETE A QUOTE
+    editQuote(_id: ID!, quoteUpdate: quoteInput!): Quotes            #UPDATE A QUOTE
 }
 
 

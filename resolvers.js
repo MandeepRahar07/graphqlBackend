@@ -4,7 +4,7 @@ const Quote = mongoose.model("Quote")
 const resolvers = {
     Query: {
         
-      // ..................Resolver for fetching all quotes............................
+      // .................. RESOLVER FOR FETCHING ALL QUOTES............................
 
       quotes: async () => {
         try {
@@ -14,10 +14,18 @@ const resolvers = {
           throw new Error("Error fetching quotes");
         }
       },
+      quote: async(_,_id)=>{
+        try{
+        const quote = await Quote.findOne({_id})
+        return quote;
+        }catch(err){
+          throw new Error ("something goes wrong")
+        }
+      }
     },
     Mutation: {
 
-      // ...................Resolver for creating a new quote........................................
+      // ................... RESOLVER FOR CREATING A NEW QUOTE........................................
 
 
       createQuote: async (_, { quoteNew }) => {
@@ -34,7 +42,7 @@ const resolvers = {
         }
       },
 
-      //..........................Resolver for delete the quote.................................
+      //......................... RESOLVER FOR DELETE THE QUOTE .................................
 
 
       findAndDeleteQuote: async (_, { _id }) => {
@@ -50,7 +58,7 @@ const resolvers = {
       },
 
 
-            //..........................Resolver for EDIT the quote.................................
+            //.......................... RESOLVER FOR EDIT THE QUOTE .................................
 
       editQuote: async (_, { _id, quoteUpdate }) => {
         try {
@@ -63,8 +71,6 @@ const resolvers = {
           throw new Error("Error editing quote");
         }
       },
-
-//...................................................................................
 
     },
   };

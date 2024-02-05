@@ -1,6 +1,5 @@
 
 import {ApolloServer,gql} from "apollo-server";
-
 import {ApolloServerPluginLandingPageGraphQLPlayground} from 'apollo-server-core'
 import mongoose from "mongoose";
 import { MONGO_URL } from "./config.js";
@@ -9,11 +8,9 @@ import { MONGO_URL } from "./config.js";
 //..............MONGO CONNECTIONS.........................................
 
 mongoose.connect(MONGO_URL);
-
 mongoose.connection.on("connected", ()=>{
     console.log("coneected to mongoDB")
 })
-
 mongoose.connection.on("error", (err)=>{
     console.log("coneected to mongoDB", err)
 })
@@ -22,7 +19,6 @@ mongoose.connection.on("error", (err)=>{
 //................IMPORT EXTERNAL FILE.................................
 
 import './models/Quotes.js';
-
 import resolvers from "./resolvers.js";
 import typeDefs from "./schema.js";
 
@@ -37,13 +33,10 @@ const server = new ApolloServer({
         ApolloServerPluginLandingPageGraphQLPlayground()
     ],
     cors: {
-        origin: '*', // Allow access from any domain
+        origin: '*',
         credentials: true,
     },
 })
-
-
-
 
 //...........SERVER LISTEN..........................
 const PORT = 8080;
