@@ -2,12 +2,13 @@
 import {ApolloServer,gql} from "apollo-server";
 import {ApolloServerPluginLandingPageGraphQLPlayground} from 'apollo-server-core'
 import mongoose from "mongoose";
-import { MONGO_URL } from "./config.js";
 
-
+import dotenv from 'dotenv'
+dotenv.config();
+console.log(process.env.MONGO_URL);
 //..............MONGO CONNECTIONS.........................................
 
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 mongoose.connection.on("connected", ()=>{
     console.log("coneected to mongoDB")
 })
